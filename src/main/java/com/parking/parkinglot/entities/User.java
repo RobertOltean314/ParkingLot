@@ -47,7 +47,7 @@ public class User {
         return password;
     }
 
-    @OneToMany
+    @OneToMany(mappedBy = "owner")
     public Collection<Cars> getCars() {
         return cars;
     }
