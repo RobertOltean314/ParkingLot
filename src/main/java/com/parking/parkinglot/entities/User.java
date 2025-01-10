@@ -5,15 +5,10 @@ import jakarta.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue
     private Long id;
-    private String username;
-    private String email;
-    private String password;
-    private Collection<Cars> cars;
 
     public void setId(Long id) {
         this.id = id;
@@ -23,36 +18,45 @@ public class User {
         return id;
     }
 
+    @Basic
+    private String username;
+
+    public String getUsername() {
+        return username;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getUsername() {
-        return username;
+    private String email;
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getEmail() {
-        return email;
+    private String password;
+
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     @OneToMany(mappedBy = "owner")
-    public Collection<Cars> getCars() {
+    private Collection<Car> cars;
+
+    public Collection<Car> getCars() {
         return cars;
     }
 
-    public void setCars(Collection<Cars> cars) {
+    public void setCars(Collection<Car> cars) {
         this.cars = cars;
     }
 }
