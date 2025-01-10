@@ -6,14 +6,20 @@
 
     <h1>Cars</h1>
     <form method="POST" action="${pageContext.request.contextPath}/Cars">
-        <a href="${pageContext.request.contextPath}/AddCar" class="btn btn-primary btn-lg">Add Car</a>
-        <button type="submit" class="btn btn-danger">Delete Cars</button>
+        <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
+            <a href="${pageContext.request.contextPath}/AddCar" class="btn btn-primary btn-lg">Add Car</a>
+        </c:if>
+        <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
+            <button type="submit" class="btn btn-danger">Delete Cars</button>
+        </c:if>
         <div class="container text-center">
-            <c:forEach var="car" items="${cars}">
+            <c:forEach var="car" items="${cars}" >
                 <div class="row">
                     <div class="col">
                         <label>
-                            <input type="checkbox" name="car_ids" value="${car.id}"/>
+                            <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
+                                <input type="checkbox" name="car_ids" value="${car.id}"/>
+                            </c:if>
                         </label>
                     </div>
                     <div class="col">
@@ -26,9 +32,16 @@
                             ${car.ownerName}
                     </div>
                     <div class="col">
-                        <a class="btn btn-secondary" href="${pageContext.request.contextPath}/EditCar?id=${car.id}">Edit
-                            Car</a>
+                        <img src="${pageContext.request.contextPath}/CarPhotos?id=${car.id}" width="48"/>
                     </div>
+                    <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
+                        <div class="col">
+                            <a class="btn btn-secondary" href="${pageContext.request.contextPath}/AddCarPhoto?id=${car.id}" role="button">Add photo</a>
+                        </div>
+                        <div class="col">
+                            <a class="btn btn-secondary" href="${pageContext.request.contextPath}/EditCar?id=${car.id}">Edit Car</a>
+                        </div>
+                    </c:if>
                 </div>
             </c:forEach>
         </div>

@@ -11,7 +11,8 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="license_plate" class="form-label">License Plate</label>
-                    <input type="text" class="form-control" id="license_plate" name="license_plate" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="license_plate" name="license_plate" placeholder=""
+                           value="" required>
                     <div class="invalid-feedback">
                         License plate is required.
                     </div>
@@ -21,7 +22,8 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="parking_spot" class="form-label">Parking Spot</label>
-                    <input type="text" class="form-control" id="parking_spot" name="parking_spot" placeholder="" value="" required>
+                    <input type="text" class="form-control" id="parking_spot" name="parking_spot" placeholder=""
+                           value="" required>
                     <div class="invalid-feedback">
                         Parking spot is required.
                     </div>
